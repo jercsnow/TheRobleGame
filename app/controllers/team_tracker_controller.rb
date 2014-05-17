@@ -1,0 +1,2 @@
+class TeamTrackerController < ApplicationController
+end
