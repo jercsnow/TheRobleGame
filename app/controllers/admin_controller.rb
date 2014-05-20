@@ -34,6 +34,13 @@ class AdminController < ApplicationController
         end    
     end
 
+    def admin
+        @all_teams = Team.all
+        @cur_time = Time.now()
+        @start_time = DateTime.new(2014, 5, 23, 18, 15, 0)
+        puts @start_time
+    end
+
     def logout
         reset_session
         redirect_to(:action=> :index)

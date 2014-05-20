@@ -1,0 +1,26 @@
+<table>
+    <tr>
+        <th>Team Name</th>
+        <th>Contact's Name</th>
+        <th>Email</th>
+        <th>Phone #</th>
+        <th>Team Clue</th>
+        <th>Time Spent on Current Clue</th>
+        <th>Finish Place</th>
+    </tr>
+    <% @all_teams.each do |team| %>
+        <tr>
+            <td><%= team.team_name %></td>
+            <td><%= team.first_name %> <%= team.last_name %></td>
+            <td><%= team.email %></td>
+            <td><%= team.phone %></td>
+            <td><%= team.clue %></td>
+            <% if team.clue != 1 %>
+                <td><%= ((@cur_time - team.time_finished)/60/60).to_i %> hours and <%= ((@cur_time - team.time_finished)/60).to_i%60 %> minutes</td>
+            <% else %>
+                <td><%= ((@cur_time - @start_time)/60/60).to_i %> hours and <%= ((@cur_time - @start_time)/60).to_i%60 %> minutes</td>
+            <% end %>
+            <td><%= team.place %></td>
+        </tr>
+    <% end %>
+</table>

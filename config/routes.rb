@@ -1,8 +1,9 @@
 Game::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
-  match '' => 'admin#index'
-  match 'logout' => 'admin#logout'
+  match '/' => 'admin#index'
+  match '/roble_staff_summary' => 'admin#admin'
+  match '/logout' => 'admin#logout'
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'

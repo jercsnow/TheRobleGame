@@ -1,5 +1,5 @@
 class Team < ActiveRecord::Base
-    attr_accessible :first_name, :last_name, :team_name, :email, :phone, :password, :clue, :password_confirmation
+    attr_accessible :first_name, :last_name, :team_name, :email, :phone, :password, :clue, :place, :time_finished, :password_confirmation
     attr_accessor :password_confirmation
 
     validates :first_name, :presence => true
@@ -21,6 +21,18 @@ class Team < ActiveRecord::Base
 
     def update_clue()
         self.clue += 1
+        self.time_finished = DateTime.now
+        if(self.clue == 9) then
+            last_place = 0
+            Team.all.each do |team|
+                puts "TEAM", "TEAM", team
+                if team.place && team.place > last_place
+                    last_place = team.place
+                end
+            end
+            self.place = last_place + 1
+            self.time_finished = DateTime.now
+        end
         self.save
     end
 end
