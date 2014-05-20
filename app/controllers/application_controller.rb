@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
     def get_cur_clue
         puts "cur", cur_team()
-        if(cur_team().clue) then
+        if(cur_team() && cur_team().clue) then
             return cur_team().clue
         else
             return nil

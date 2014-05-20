@@ -3,11 +3,18 @@ class Team < ActiveRecord::Base
     attr_accessor :password_confirmation
 
     validates :first_name, :presence => true
+    validates :first_name, length: { in: 2..45 }
     validates :last_name, :presence => true
+    validates :last_name, length: { in: 2..45 }
     validates :password, :presence => true
     validates :team_name, :presence => true
+    validates :team_name, length: { in: 1..45 }
     validates :email, :presence => true
+    validates :email, length: { in: 6..45 }
     validates :phone, :presence => true
+    validates :phone, numericality: { only_integer: true }
+    validates :phone, length: { in: 10..10 }
+    validates :password, length: { in: 6..20 }
     validates_confirmation_of :password
 
     def password_valid?(attempted_password)

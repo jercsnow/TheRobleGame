@@ -2,7 +2,9 @@ Game::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
   match '/' => 'admin#index'
-  match '/roble_staff_summary' => 'admin#admin'
+  match '/contact' => 'admin#contact'
+  match '/staff' => 'admin#staff'
+  match '/summary' => 'admin#admin'
   match '/logout' => 'admin#logout'
 
   # Sample of regular route:

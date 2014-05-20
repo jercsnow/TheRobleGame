@@ -1,5 +1,10 @@
 class CluesController < ApplicationController
     def index
+        if(session['cur_team'] == nil) then
+            redirect_to(:controller => 'admin', :action => 'index') 
+            return
+        end
+        @title = "The Roble Game - Current Clue"
         @clue_num = get_cur_clue();
         @cur_team = cur_team
         addresses = [
@@ -12,7 +17,7 @@ class CluesController < ApplicationController
             'Address 7',
             'Address 8'
         ]
-        @cur_address = addresses[@clue_num]
+        @cur_address = addresses[@clue_num - 1]
         if(@cur_team.time_finished) then
             time = @cur_team.time_finished.localtime()
             @time_finished_str = time.strftime("%A at %I:%M %p")
