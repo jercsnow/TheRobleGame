@@ -1,4 +1,4 @@
-<% if @clue_num != 9 then %>
+<% if @clue_num != 11 then %>
     <h3>Your team is currently on clue <%= @clue_num %>.</h3>
     <p>The address of your current clue is <b><%= @cur_address %></b>.<br> Keep in mind that once you are at the correct location, clue will be hidden. This is apart of the challenge.</p>
     <div class="log_in">
@@ -10,5 +10,5 @@
     </div>
 <% else %>
     <h3>You have finished the game!</h3>
-    <h4>Congrats! Your team rank is: <%= @cur_team.place %>. Your team finished <%= @time_finished_str %>.</h4>
+    <h4>Congrats! Your team rank is: <%= @cur_team.place %>. Your team finished <%= @time_finished_str %>. <br>If you are finishing around 9-10 AM there will breakfast waiting for you at the quad!</h4>
 <% end %>

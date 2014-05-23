@@ -15,13 +15,13 @@
             <td><%= team.first_name %> <%= team.last_name %></td>
             <td><%= team.email %></td>
             <td><%= team.phone %></td>
-            <% if team.clue == 9 %>
+            <% if team.clue == 11 %>
                 <td>Finished</td>
             <% else %>
                 <td><%= team.clue %></td>
             <% end %>
             <% if team.clue != 1 %>
-                <% if team.clue == 9 %>
+                <% if team.clue == 11 %>
                     <td>Completed <%= team.time_finished.localtime().strftime("%A at %I:%M %p") %></td>
                 <% else %>
                     <td><%= ((@cur_time - team.time_finished)/60/60).to_i %> hours and <%= ((@cur_time - team.time_finished)/60).to_i%60 %> minutes</td>

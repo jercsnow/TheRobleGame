@@ -8,14 +8,16 @@ class CluesController < ApplicationController
         @clue_num = get_cur_clue();
         @cur_team = cur_team
         addresses = [
-            'Address 1',
-            'Address 2',
-            'Address 3',
-            'Address 4',
-            'Address 5',
-            'Address 6',
-            'Address 7',
-            'Address 8'
+            '655 Knight Way, Stanford, CA 94305',
+            '1401 N Shoreline Blvd, Mountain View, CA 94043',
+            'Across the street from the Hellman Tennis Center, Berkeley, CA, United States',
+            'Battery Spencer, Conzelman Rd, Sausalito, CA 94965',
+            'Civic Center Plaza, Polk Gulch, San Francisco, CA 94102',
+            'Palace of Fine Arts Theatre, 3301 Lyon St, San Francisco, CA 94123',
+            '599 Martin Luther King Jr Dr, San Francisco, CA 94118',
+            'Half Moon Bay State Beach, 95 Kelly Ave, Half Moon Bay, CA 94019',
+            'Pigeon Point Lighthouse, Pigeon Point Rd, Pescadero, CA 94060',
+            'The Whispering Circle'
         ]
         @cur_address = addresses[@clue_num - 1]
         if(@cur_team.time_finished) then
@@ -29,21 +31,23 @@ class CluesController < ApplicationController
 
     def question_handler
         answers = [
-            'Answer 1',
-            'Answer 2',
-            'Answer 3',
-            'Answer 4',
-            'Answer 5',
-            'Answer 6',
-            'Answer 7',
-            'Answer 8'
+            ['What.'],
+            ['Hrithik Roshan'],
+            ['Decade'],
+            ['Faulty'],
+            ['Arrested Development', 'Arrested'],
+            ['Augusto Boal'],
+            ['Wiggles the Clown', 'Wiggles'],
+            ['MorpheusNeo1'],
+            ['Pirandello'],
+            ['a shot', 'a shot put', 'shot put', 'shot']
         ]
         clue_num = get_cur_clue();
-        if(answers[clue_num-1] == params[:answer]) then
-            cur_team.update_clue()
-            redirect_to(:action=> :index)
-        else
-            redirect_to(:action=> :index)
+        answers[clue_num - 1].each do |word|
+            if(word.downcase == params[:answer].downcase) then
+                cur_team.update_clue()
+            end
         end
+        redirect_to(:action=> :index)
     end
 end

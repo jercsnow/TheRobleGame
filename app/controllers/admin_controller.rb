@@ -50,7 +50,7 @@ class AdminController < ApplicationController
         end
         @all_teams = Team.all(:order => 'clue DESC, place ASC, time_finished ASC')
         @cur_time = Time.now()
-        @start_time = DateTime.new(2014, 5, 23, 18, 15, 0)
+        @start_time = DateTime.new(2014, 5, 24, 1, 5, 0)
         puts @start_time
     end
 
@@ -58,15 +58,13 @@ class AdminController < ApplicationController
     end
 
     def staff_login_handler
-        if(params[:password_login])
-            if(params[:password_login] == 'roblankets') then
-                session['staff'] = true
-                redirect_to :controller => 'admin', :action => 'admin'
-                return
-            end
+        if(params[:password_login] and params[:password_login] == 'roblankets') then
+            session['staff'] = true
+            redirect_to :controller => 'admin', :action => 'admin'
+        else
+            # flash[:notice] = "Either password or email are wrong. Try again. If you continue to have problems, contact Jeremy @ (916) 642-6530."
+            redirect_to(:action => :index)
         end
-        flash[:notice] = "Either password or email are wrong. Try again. If you continue to have problems, contact Jeremy @ (916) 642-6530."
-        redirect_to(:action => :index)
     end
 
     def contact

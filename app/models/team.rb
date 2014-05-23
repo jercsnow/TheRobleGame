@@ -29,7 +29,7 @@ class Team < ActiveRecord::Base
     def update_clue()
         self.clue += 1
         self.time_finished = DateTime.now
-        if(self.clue == 9) then
+        if(self.clue == 11) then
             last_place = 0
             Team.all.each do |team|
                 puts "TEAM", "TEAM", team
