@@ -4,7 +4,7 @@ class CreateTeams < ActiveRecord::Migration
         t.string :first_name
         t.string :last_name
         t.string :team_name
-        t.integer :phone
+        t.string :phone
         t.integer :clue, :default => 1
         t.integer :place
         t.datetime :time_finished
@@ -14,4 +14,3 @@ class CreateTeams < ActiveRecord::Migration
     end
   end
 end
-

@@ -12,7 +12,7 @@ class Team < ActiveRecord::Base
     validates :email, :presence => true
     validates :email, length: { in: 6..45 }
     validates :phone, :presence => true
-    validates :phone, numericality: { only_integer: true }
+    # validates :phone, numericality: { only_integer: true }
     validates :phone, length: { in: 10..10 }
     validates :password, length: { in: 6..20 }
     validates_confirmation_of :password
